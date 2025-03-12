@@ -1,12 +1,11 @@
-import React from "react";
 import { notFound } from "next/navigation";
 
 interface PageProps {
-  params: { slug: string[] }; // ✅ Ensure `slug` is always a defined array
+  params: { slug: string[] }; // ✅ Ensure `slug` is always an array
 }
 
-const Docs = ({ params }: PageProps) => {
-  if (!params?.slug) return notFound(); // ✅ Ensure valid params
+export default function DocsPage({ params }: PageProps) {
+  if (!params || !params.slug) return notFound(); // ✅ Ensures params exist
 
   if (params.slug.length === 2) {
     return (
@@ -19,6 +18,4 @@ const Docs = ({ params }: PageProps) => {
   }
 
   return <h1>Docs Home Page</h1>;
-};
-
-export default Docs;
+}
