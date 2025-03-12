@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 interface PageProps {
-  params: { slug: string[] }; // ✅ Ensure `slug` is always an array
+  params: { slug: string[] }; // ✅ Ensure `slug` is always a valid array
 }
 
 export default function DocsPage({ params }: PageProps) {
