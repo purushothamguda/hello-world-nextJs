@@ -1,7 +1,7 @@
 import React from "react";
 
 interface PageProps {
-  params: { slug?: string[] };
+  params: { slug?: string[] | undefined };
 }
 
 const Docs = ({ params }: PageProps) => {
