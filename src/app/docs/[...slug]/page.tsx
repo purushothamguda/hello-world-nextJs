@@ -1,12 +1,10 @@
 import React from "react";
 
-const Docs = ({
-  params,
-}: {
-  params: {
-    slug: string[];
-  };
-}) => {
+interface PageProps {
+  params: { slug: string[] };
+}
+
+const Docs = ({ params }: PageProps) => {
   if (params.slug.length === 2) {
     return (
       <h1>
