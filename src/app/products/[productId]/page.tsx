@@ -2,9 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 
 type Props = {
-  params: {
-    productId: string;
-  };
+  params: Promise<{ productId: string }>;
 };
 
 // export const generateMetadata = async ({
@@ -20,16 +18,20 @@ type Props = {
 //   };
 // };
 
-export const generateMetadata = ({ params }: Props): Metadata => {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  const { productId } = await params;
   return {
-    title: `Product ${params.productId}`,
+    title: `Product ${productId}`,
   };
 };
 
-const ProductDetails = ({ params }: Props) => {
+const ProductDetails = async ({ params }: Props) => {
+  const { productId } = await params;
   return (
     <div>
-      <h1>Details about Product {params.productId}</h1>
+      <h1>Details about Product {productId}</h1>
     </div>
   );
 };

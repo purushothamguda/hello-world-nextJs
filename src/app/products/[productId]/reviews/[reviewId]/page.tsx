@@ -2,26 +2,30 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: {
+  params: Promise<{
     productId: string;
     reviewId: string;
-  };
+  }>;
 };
 
-export const generateMetadata = ({ params }: Props): Metadata => {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  const { reviewId, productId } = await params;
   return {
-    title: `Review ${params.reviewId} Product ${params.productId}`,
+    title: `Review ${reviewId} Product ${productId}`,
   };
 };
 
-const ReviewDetails = ({ params }: Props) => {
-  if (parseInt(params.reviewId) > 1000) {
+const ReviewDetails = async ({ params }: Props) => {
+  const { reviewId, productId } = await params;
+  if (parseInt(reviewId) > 1000) {
     notFound();
   }
   return (
     <div>
       <h1>
-        review of {params.reviewId} for the product {params.productId}
+        review of {reviewId} for the product {productId}
       </h1>
     </div>
   );

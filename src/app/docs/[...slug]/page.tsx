@@ -1,12 +1,16 @@
-const Docs = ({ params }: { params: { slug: string[] } }) => {
-  if (params.slug.length === 2) {
+type Props = {
+  params: Promise<{ slug: string[] }>;
+};
+const Docs = async ({ params }: Props) => {
+  const { slug } = await params;
+  if (slug.length === 2) {
     return (
       <h2>
-        feature {params.slug[0]} and content {params.slug[1]}
+        feature {slug[0]} and content {slug[1]}
       </h2>
     );
-  } else if (params.slug.length === 1) {
-    return <h2>feature {params.slug[0]}</h2>;
+  } else if (slug.length === 1) {
+    return <h2>feature {slug[0]}</h2>;
   }
   return (
     <div>
