@@ -12,11 +12,23 @@ const Home = () => {
           justifyContent: "flex-start",
         }}
       >
-        <Link href="/blog" style={{ marginLeft: "1rem" }}>
+        <Link href="/blog" style={{ margin: "0px 1rem" }}>
           Blog
         </Link>
-        <Link href="/products" style={{ marginLeft: "1rem" }}>
+        <Link href="/products" style={{ margin: "0px 1rem" }}>
           Products
+        </Link>
+        <Link
+          href="/articles/breaking-news-123?lang=en"
+          style={{ margin: "0px 1rem" }}
+        >
+          Read in English
+        </Link>
+        <Link
+          href="/articles/breaking-news-123?lang=fr"
+          style={{ margin: "0px 1rem" }}
+        >
+          Read in French
         </Link>
       </div>
       <h1>Welcome Home!</h1>
