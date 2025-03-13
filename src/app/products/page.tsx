@@ -19,12 +19,13 @@ const ProductList = () => {
         <Link href="/products/3">Product 3</Link>
       </h2>
       <h2>
-        {productListValues.map((productId) => {
+        {productListValues.map((productId, index) => {
           return (
             <Link
               href={`/products/${productId}`}
               style={{ display: "flex", flexDirection: "column" }}
               replace
+              key={index}
             >
               Product {productId}
             </Link>
