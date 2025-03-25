@@ -20,15 +20,15 @@ const navLinks = [
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
+  const [input, setInput] = React.useState("");
   return (
     <>
       <div>
         <input
           type="text"
           placeholder="Enter the text"
-          onChange={(e) => {
-            e.target.value;
-          }}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
       </div>
       <div>
