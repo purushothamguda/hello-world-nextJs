@@ -17,8 +17,18 @@ export const generateMetadata = async ({
   };
 };
 
+function getRandomInt(count: number) {
+  return Math.floor(Math.random() * count);
+}
+
 const ReviewDetails = async ({ params }: Props) => {
   const { reviewId, productId } = await params;
+  const random = getRandomInt(2);
+
+  if (random === 1) {
+    throw new Error("Errow loading revew");
+  }
+
   if (parseInt(reviewId) > 1000) {
     notFound();
   }
