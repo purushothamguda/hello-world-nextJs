@@ -1,5 +1,7 @@
+"use client";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { use } from "react";
 
 type Props = {
   params: Promise<{
@@ -8,21 +10,21 @@ type Props = {
   }>;
 };
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
-  const { reviewId, productId } = await params;
-  return {
-    title: `Review ${reviewId} Product ${productId}`,
-  };
-};
+// export const generateMetadata = async ({  //client side we can not use server components
+//   params,
+// }: Props): Promise<Metadata> => {
+//   const { reviewId, productId } = await params;
+//   return {
+//     title: `Review ${reviewId} Product ${productId}`,
+//   };
+// };
 
 function getRandomInt(count: number) {
   return Math.floor(Math.random() * count);
 }
 
-const ReviewDetails = async ({ params }: Props) => {
-  const { reviewId, productId } = await params;
+const ReviewDetails = ({ params }: Props) => {
+  const { reviewId, productId } = use(params); // use() instead of async/await if it is a client component
   const random = getRandomInt(2);
 
   if (random === 1) {
